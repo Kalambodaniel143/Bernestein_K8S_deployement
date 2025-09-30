@@ -19,7 +19,7 @@ spec:
             - containerPort: 5432
           envFrom:
             - secretRef:
-                name: Bernestein
+                name: bernestein
             - configMapRef:
                 name: bernestein-config
           volumeMounts:
@@ -28,4 +28,4 @@ spec:
       volumes:
         - name: postgres-storage
           persistentVolumeClaim:
-          claimName: bernestein-pvc
+            claimName: bernestein-pvc
