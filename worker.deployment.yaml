@@ -8,37 +8,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: worker-deployment
-  namespace: default
-  labels:
-    app: worker
-
+  name: bernestein-worker
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: worker
+      app: bernestein-worker
   template:
     metadata:
       labels:
-        app: worker
-
-template:
-    metadata:
-      labels:
-        app: worker
+        app: bernestein-worker
     spec:
       containers:
-        - name: worker-app
-          image: epitechcontent/t-dop-600-worker:k8s
-          resources:
-            limits:
-              memory: "256M"
+        - name: bernestein-worker
+          image: dockersamples/examplevotingapp_worker
+          env:
+            - name: REDIS_HOST
+              value: "bernestein-redis"
+            - name: POSTGRES_HOST
+              value: "bernestein-postgres"
           envFrom:
-            - configMapRef:
-                name: redis-configmap
-            - configMapRef:
-                name: postgres-configmap
             - secretRef:
-                name: postgres-secret
-      restartPolicy: Always
+                name: bernestein
