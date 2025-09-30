@@ -1,0 +1,21 @@
+##
+## EPITECH PROJECT, 2025
+## G-DOP-500-COT-5-1-bernstein-4
+## File description:
+## result.service.yaml
+##
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: result-service
+  namespace: default
+spec:
+  type: ClusterIP
+  selector:
+    app: result
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+

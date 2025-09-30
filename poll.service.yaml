@@ -1,0 +1,21 @@
+##
+## EPITECH PROJECT, 2025
+## G-DOP-500-COT-5-1-bernstein-4
+## File description:
+## poll.service.yaml
+##
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: poll-service
+  namespace: default
+spec:
+  type: ClusterIP # accessible uniquement dans le cluster
+  selector:
+    app: poll     # cible les Pods avec l'étiquette "app: poll"
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+

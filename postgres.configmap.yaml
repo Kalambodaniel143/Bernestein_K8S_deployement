@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: bernestein-config
+data:
+  POSTGRES_DB: bernestein_db
+  POSTGRES_HOST: bernestein-postgres
+  POSTGRES_PORT: "5432"
